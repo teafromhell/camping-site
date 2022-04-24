@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import "./CampgroundsList.scss";
 import logo from "../Assets/Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import search from "../Assets/SearchIcon.svg";
 import Cards from "../components/Cards";
 
-function CampgroundsList() {
+function CampgroundsList({cards}) {
   const [searchCamping, setSearchCamping] = useState("");
+  const navigate = useNavigate()
+
+  const signupPage=()=>{
+    navigate('/signup')
+  }
   return (
     <div className="list">
       <div className="list__empty-left"></div>
@@ -27,9 +32,11 @@ function CampgroundsList() {
           <Link to="/login" className="list__link-login">
             Login
           </Link>
-          <button className="list__create-btn">Create an account</button>
+          <button onClick={signupPage} className="list__create-btn">Create an account</button>
         </div>
       </div>
+
+
       <div className="list__header">
         <b>Welcome to YelpCamp!</b>
         <p>
@@ -55,7 +62,8 @@ function CampgroundsList() {
           <div>Or add your own campground</div>
         </div>
       </div>
-      <Cards searchCamping={searchCamping} />
+      <Cards searchCamping={searchCamping} cards={cards} />
+      
       <div className="list__empty-right"></div>
     </div>
   );

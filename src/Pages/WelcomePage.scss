@@ -1,4 +1,4 @@
-@import '../variables/variables.scss';
+@import "../variables/variables.scss";
 
 body {
   background-color: $WhiteBackground;
@@ -6,7 +6,7 @@ body {
 
 .main {
   display: grid;
-  grid-template-columns: 0.4fr 1.5fr 0.5fr 1.5fr;
+  grid-template-columns: 0.3fr 1.5fr 0.5fr 1.5fr;
   grid-template-rows: 8rem calc(100vh - 8rem);
 
   &__empty {
@@ -15,7 +15,6 @@ body {
   }
 
   &__left {
-
     grid-column: 2;
     grid-row: 2/3;
     background-color: $WhiteBackground;
@@ -24,21 +23,16 @@ body {
     justify-content: space-between;
     align-items: center;
     justify-self: center;
-
-
   }
   &__logo {
     grid-column: 2;
     grid-row: 1/2;
-
-    
 
     display: flex;
     align-self: flex-start;
     margin-top: 2rem;
   }
   &__text {
-    
     b {
       font-size: 50px;
       font-weight: 700;
@@ -63,7 +57,7 @@ body {
   &__right {
     grid-column: 4;
     grid-row: 1/3;
-      display: flex;
+    display: flex;
     img {
       width: 100%;
       height: 100%;
@@ -81,7 +75,7 @@ body {
     margin-top: 0.3rem;
     margin-bottom: 2rem;
     &:hover {
-        background-color: lighten(black, 10%);
+      background-color: lighten(black, 10%);
     }
   }
   &__partners {
@@ -89,19 +83,17 @@ body {
   }
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width: 1024px) {
   .main {
     display: grid;
     grid-template-columns: 100vw;
     grid-template-rows: 5rem 0.5fr auto;
-    
+
     &__logo {
       grid-column: 1;
       grid-row: 1 / 1;
       margin-top: 2rem;
       margin-left: 1.5rem;
-
-      
     }
 
     &__left {
@@ -119,20 +111,18 @@ body {
     }
     &__right {
       grid-column: 1;
-      grid-row: 2 ;
+      grid-row: 2;
       display: flex;
-      
+
       img {
         width: 100%;
         object-fit: contain;
       }
     }
-    
   }
 }
 
-
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
   .main {
     display: grid;
     grid-template-columns: 100vw;
@@ -142,8 +132,6 @@ body {
       grid-row: 1 / 1;
       margin-top: 2rem;
       margin-left: 1.5rem;
-
-      
     }
 
     &__left {
@@ -159,18 +147,13 @@ body {
     }
     &__right {
       grid-column: 1;
-      grid-row: 2 ;
+      grid-row: 2;
       display: flex;
       img {
-        
         width: 100%;
         object-fit: none;
         aspect-ratio: 1 / 1;
       }
     }
-    
   }
 }
-
-
-
