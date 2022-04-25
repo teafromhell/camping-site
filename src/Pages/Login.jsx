@@ -1,10 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.scss";
 import logo from "../Assets/Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import user from "../Assets/User Testimonial.svg";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/slices/userSlice";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
+  const [mail, setMail] = useState();
+  const [password, setPassword] = useState();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isInvalid, setInvalid] = useState(false);
+
+  useEffect(() => {
+    setInvalid(false);
+  }, [mail, password]);
+
+  async function handleSubmit(e, mail, password) {
+    e.preventDefault();
+    const auth = getAuth();
+    try {
+      await signInWithEmailAndPassword(auth, mail, password).then(
+        ({ user }) => {
+          dispatch(
+            setUser({
+              mail: user.email,
+              id: user.uid,
+              token: user.accessToken,
+            })
+          );
+
+          navigate("/campgrounds");
+        }
+      );
+    } catch {
+      setInvalid(true);
+    }
+  }
   return (
     <div className="login">
       <div className="login__empty"></div>
@@ -18,12 +52,28 @@ function Login() {
       <div className="login__left">
         <b>Start exploring camps from all around the world</b>
         <form action="">
-          <label htmlFor="">Username</label>
-          <input type="text" placeholder="Enter Your Username" />
+          <label htmlFor="">Usermail</label>
+
+          <input
+            value={mail}
+            onChange={(e) => setMail(e.target.value)}
+            type="text"
+            placeholder="Enter Your Usermail"
+            className={`${isInvalid ? "fail" : null}`}
+          />
           <label htmlFor="">Password</label>
-          <input type="text" placeholder="Enter Your Password" />
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="text"
+            placeholder="Enter Your Password"
+            className={`${isInvalid ? "fail" : null}`}
+          />
+          <button onClick={(e) => handleSubmit(e, mail, password)}>
+            Login
+          </button>
         </form>
-        <button>Login</button>
+
         <div>
           <span>Not a user yet?</span>
           <Link to="/signup">
@@ -41,7 +91,7 @@ function Login() {
             camps on here are definitely well picked and added."
           </b>
           <div>
-            <div className="login__username">
+            <div className="login__usermail">
               <img src={user} alt="user" />
               <div>
                 <b>May Andrews</b>

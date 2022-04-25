@@ -30,12 +30,23 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    .list__link-home,
-    .list__link-login {
+    .list__link-home {
       margin: 0 1.5rem;
       cursor: pointer;
       text-decoration: none;
       color: black;
+    }
+
+    .list__link-login {
+      margin-left: 1.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+    }
+
+    p {
+      color: black;
+      font-weight: 700;
     }
   }
 
@@ -47,6 +58,7 @@
     padding: 1rem;
     border-radius: 4px;
     cursor: pointer;
+    margin-left: 1.5rem;
 
     &:hover {
       background-color: lighten(black, 20%);
@@ -106,6 +118,9 @@
       width: fit-content;
       cursor: pointer;
       color: $Verydarkgrayishblue;
+      .add-link {
+        color: $Verydarkgrayishblue;
+      }
     }
   }
 }

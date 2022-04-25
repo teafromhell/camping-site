@@ -1,10 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./SignUp.scss";
 import logo from "../Assets/Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import user from "../Assets/User Testimonial.svg";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { setUser } from "../store/slices/userSlice";
+import { useDispatch } from "react-redux";
 
 function SignUp() {
+  const [mailReg, setMailReg] = useState();
+  const [passwordReg, setPasswordReg] = useState();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isInvalid, setInvalid] = useState(false);
+  const [pwdLength, setPwdLength] = useState(false);
+
+  useEffect(() => {
+    setInvalid(false);
+
+    setPwdLength(false);
+  }, [mailReg, passwordReg]);
+
+  async function handleRegister(e, mail, password) {
+    e.preventDefault();
+    const auth = getAuth();
+    try {
+      await createUserWithEmailAndPassword(auth, mail, password).then(({ user }) => {
+        dispatch(
+          setUser({
+            mail: user.email,
+            id: user.uid,
+            token: user.accessToken,
+          })
+        );
+        navigate("/campgrounds");
+      });
+    } catch {
+      setInvalid(true);
+    }
+    if (passwordReg.length < 6) {
+      setPwdLength(true);
+    }
+  }
+
   return (
     <div className="signup">
       <div className="signup__empty"></div>
@@ -18,17 +56,41 @@ function SignUp() {
       <div className="signup__left">
         <b>Start exploring camps from all around the world</b>
         <form action="">
-          <label htmlFor="">Username</label>
-          <input type="text" placeholder="Choose Username" />
-          <label htmlFor="">Password</label>
-          <input type="text" placeholder="Choose Password" />
+          <label htmlFor="">Usermail</label>
+          <input
+            className={`${isInvalid ? "fail" : null}`}
+            value={mailReg}
+            onChange={(e) => setMailReg(e.target.value)}
+            type="text"
+            placeholder="Choose Usermail"
+          />
+          <div>
+            <label htmlFor="">Password</label>
+            <p
+              className={`password-warning ${
+                pwdLength ? "password-fail" : null
+              }`}
+            >
+              should be at least 6 characters
+            </p>
+          </div>
+          <input
+            className={`${isInvalid ? "fail" : null}`}
+            value={passwordReg}
+            onChange={(e) => setPasswordReg(e.target.value)}
+            type="text"
+            placeholder="Choose Password"
+          />
+          <button onClick={(e) => handleRegister(e, mailReg, passwordReg)}>
+            Create an account
+          </button>
         </form>
-        <button>Create an account</button>
+
         <div>
           <span>Already a user?</span>
           <Link to={"/login"}>
             {" "}
-            <span className="signup__signin-span">Sign in</span>
+            <span className="signup__signin-span ">Sign in</span>
           </Link>
         </div>
       </div>
@@ -41,7 +103,7 @@ function SignUp() {
             camps on here are definitely well picked and added."
           </b>
           <div>
-            <div className="signup__username">
+            <div className="signup__usermail">
               <img src={user} alt="user" />
               <div>
                 <b>May Andrews</b>

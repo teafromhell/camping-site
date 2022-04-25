@@ -11,60 +11,76 @@
     grid-row: 1/-1;
   }
   &__left {
-      grid-column: 2;
-      grid-row: 2/3;
+    grid-column: 2;
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    b {
+      font-size: 30px;
+      margin-bottom: 2rem;
+      margin-top: -2rem;
+    }
+    form {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-        
-      b {
-          font-size: 30px;
-          margin-bottom: 2rem;
-          margin-top: -2rem;
+      div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
       }
-      form {
-          display: flex;
-          flex-direction: column;
-          input {
-              padding: 1rem;
-              border: none;
-              margin: 1rem 0;
-              background-color: rgb(247,247,247);
-              border-radius: 4px;
-
-              &:focus {
-                  outline:1px solid $Grayishblue;
-                  border-radius: 4px;
-              }
-          }
-          
-      }
-      button {
-        background-color: black;
-        color: $White;
-        outline: none;
+      input {
+        padding: 1rem;
         border: none;
-        padding: 1rem 1.5rem;
+        margin: 1rem 0;
+        background-color: rgb(247, 247, 247);
         border-radius: 4px;
-        cursor: pointer;
-        margin-bottom: 1rem;
-        &:hover {
-          background-color: lighten(black, 10%);
+
+        &:focus {
+          outline: 1px solid $Grayishblue;
+          border-radius: 4px;
         }
       }
-      span {
-            
-            color: $Verydarkgrayishblue;
-            margin-right: 0.5rem;
-          }
-    .signup__signin-span {
-        color: rgb(46,148,177);
-        text-decoration: underline;
-        cursor: pointer;
-        font-weight: 500;
-        
-    }
+      .fail {
+        outline: 1px solid brown;
+      }
       
+      .password-warning {
+        font-size: 14px;
+        visibility: hidden;
+
+      }
+      .password-fail {
+        color: brown;
+        visibility: visible;
+        
+      }
+    }
+    button {
+      background-color: black;
+      color: $White;
+      outline: none;
+      border: none;
+      padding: 1rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      &:hover {
+        background-color: lighten(black, 10%);
+      }
+    }
+    span {
+      color: $Verydarkgrayishblue;
+      margin-right: 0.5rem;
+    }
+    .signup__signin-span {
+      color: rgb(46, 148, 177);
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 500;
+    }
   }
 
   &__right {

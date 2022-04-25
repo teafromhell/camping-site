@@ -31,12 +31,25 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    .card__link-home,
-    .card__link-login {
+
+    .card__link-home {
       margin: 0 1.5rem;
       cursor: pointer;
       text-decoration: none;
       color: black;
+    }
+
+    .card__link-login {
+      
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+    }
+
+    .login-p {
+      color: black;
+      font-weight: 700;
+      margin-right: 1.5rem;
     }
     .card__link-camps {
       cursor: pointer;
@@ -53,6 +66,8 @@
     padding: 1rem;
     border-radius: 4px;
     cursor: pointer;
+    margin-left: 1.5rem;
+    
 
     &:hover {
       background-color: lighten(black, 20%);

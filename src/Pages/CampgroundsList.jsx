@@ -4,14 +4,24 @@ import logo from "../Assets/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import search from "../Assets/SearchIcon.svg";
 import Cards from "../components/Cards";
+import { useAuth } from "../hooks/use-auth";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../store/slices/userSlice";
 
-function CampgroundsList({cards}) {
+function CampgroundsList({ cards }) {
   const [searchCamping, setSearchCamping] = useState("");
-  const navigate = useNavigate()
+  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const signupPage=()=>{
-    navigate('/signup')
-  }
+  const signupPage = () => {
+    navigate("/signup");
+  };
+  
+  const { isAuth, login } = useAuth();
+ 
+
+
   return (
     <div className="list">
       <div className="list__empty-left"></div>
@@ -29,13 +39,28 @@ function CampgroundsList({cards}) {
           </Link>
         </div>
         <div className="list__navbar-right">
-          <Link to="/login" className="list__link-login">
-            Login
-          </Link>
-          <button onClick={signupPage} className="list__create-btn">Create an account</button>
+          {isAuth ? (
+            <>
+              <p>{login}</p>
+              <div
+                className="list__link-login"
+                onClick={() => dispatch(removeUser())}
+              >
+                Logout
+              </div>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="list__link-login">
+                Login
+              </Link>
+              <button onClick={signupPage} className="list__create-btn">
+                Create an account
+              </button>
+            </>
+          )}
         </div>
       </div>
-
 
       <div className="list__header">
         <b>Welcome to YelpCamp!</b>
@@ -59,11 +84,19 @@ function CampgroundsList({cards}) {
           </button>
         </form>
         <div className="list__add">
-          <div>Or add your own campground</div>
+          {isAuth ? (
+            <Link className="add-link" to="/addcampground">
+              Or add your own campground
+            </Link>
+          ) : (
+            <Link className="add-link" to="/signup">
+              Or add your own campground
+            </Link>
+          )}
         </div>
       </div>
       <Cards searchCamping={searchCamping} cards={cards} />
-      
+
       <div className="list__empty-right"></div>
     </div>
   );

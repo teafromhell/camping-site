@@ -5,14 +5,20 @@ import { Link } from "react-router-dom";
 import logo from "../Assets/Logo.svg";
 import map from "../Assets/Map.png";
 import bubble from "../Assets/Chat Bubble.svg";
+import { useAuth } from "../hooks/use-auth";
+import { removeUser } from "../store/slices/userSlice";
+import { useDispatch } from "react-redux";
 
 function CardDetail({ cards }) {
   const { name } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const signupPage = () => {
     navigate("/signup");
   };
+
+  const { isAuth, login } = useAuth();
   return (
     <div className="card">
       <div className="card__empty-left"></div>
@@ -33,12 +39,27 @@ function CardDetail({ cards }) {
           </Link>
         </div>
         <div className="card__navbar-right">
-          <Link to="/login" className="card__link-login">
+          {isAuth ? (
+            <>
+              <p className="login-p">{login}</p>
+              <div
+                className="card__link-login"
+                onClick={() => dispatch(removeUser())}
+              >
+                Logout
+              </div>
+            </>
+          ) : (
+            <>
+            <Link to="/login" className="card__link-login">
             Login
           </Link>
           <button onClick={signupPage} className="card__create-btn">
             Create an account
           </button>
+          </>
+          )}
+          
         </div>
       </div>
       <div className="card__map">
@@ -49,7 +70,7 @@ function CardDetail({ cards }) {
         .filter((item) => item.name === name)
         .map((item) => {
           return (
-            <div className="card__more-details">
+            <div key={item.id} className="card__more-details">
               <div className="card__image">
                 <img src={item.image} alt="" />
               </div>
