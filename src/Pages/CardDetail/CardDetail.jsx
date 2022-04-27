@@ -2,23 +2,23 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./CardDetail.scss";
 import { Link } from "react-router-dom";
-import logo from "../Assets/Logo.svg";
-import map from "../Assets/Map.png";
-import bubble from "../Assets/Chat Bubble.svg";
-import { useAuth } from "../hooks/use-auth";
-import { removeUser } from "../store/slices/userSlice";
+import logo from "../../Assets/Logo.svg";
+import map from "../../Assets/Map.png";
+import bubble from "../../Assets/Chat Bubble.svg";
+import { useAuth } from "../../hooks/use-auth";
+import { removeUser } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
 
 function CardDetail({ cards }) {
   const { name } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const signupPage = () => {
     navigate("/signup");
   };
 
-  const { isAuth, login } = useAuth();
+  const { isAuth, login, comments } = useAuth();
   return (
     <div className="card">
       <div className="card__empty-left"></div>
@@ -51,15 +51,14 @@ function CardDetail({ cards }) {
             </>
           ) : (
             <>
-            <Link to="/login" className="card__link-login">
-            Login
-          </Link>
-          <button onClick={signupPage} className="card__create-btn">
-            Create an account
-          </button>
-          </>
+              <Link to="/login" className="card__link-login">
+                Login
+              </Link>
+              <button onClick={signupPage} className="card__create-btn">
+                Create an account
+              </button>
+            </>
           )}
-          
         </div>
       </div>
       <div className="card__map">
@@ -72,7 +71,7 @@ function CardDetail({ cards }) {
           return (
             <div key={item.id} className="card__more-details">
               <div className="card__image">
-                <img src={item.image} alt="" />
+                <img src={item.imageDetail} alt="" />
               </div>
               <div className="card__name-price">
                 <b>{item.name}</b>
@@ -92,7 +91,7 @@ function CardDetail({ cards }) {
       <div className="card__comments">
         <div className="card__single-comment">
           <div className="comment-header">
-            <b>Adam Jones</b>
+            <b>Adam</b>
             <p>13h ago</p>
           </div>
           <p>
@@ -103,7 +102,7 @@ function CardDetail({ cards }) {
         </div>
         <div className="card__single-comment">
           <div className="comment-header">
-            <b>Isaac Dylan</b>
+            <b>Isaac</b>
             <p>1 day ago</p>
           </div>
           <p>
@@ -112,10 +111,42 @@ function CardDetail({ cards }) {
           </p>
           <div className="breaker-line"></div>
         </div>
-        <div className="card__btn-block">
-          <img src={bubble} alt="bubble" />
-          <button className="card__review-btn">Leave a Review</button>
-        </div>
+        
+         {comments.filter((item)=> item.name === name)
+              .map((item)=>{
+           return (
+            <div className="card__single-comment">
+              <div className="comment-header"><b>{item.login}</b>
+              <p>1</p>
+              </div>
+              <p>{item.comment}</p>
+              <div className="breaker-line"></div>
+            </div>
+           )
+         })}
+        
+        
+
+        {isAuth ? (
+          cards
+            .filter((item) => item.name === name)
+            .map((item) => {
+              return (
+                <Link
+                  className="card__btn-block"
+                  to={`newcomment/${item.name}`}
+                >
+                  <img src={bubble} alt="bubble" />
+                  <button className="card__review-btn">Leave a Review</button>
+                </Link>
+              );
+            })
+        ) : (
+          <div className="card__btn-block">
+            <img src={bubble} alt="bubble" />
+            <button className="card__review-btn">Leave a Review</button>
+          </div>
+        )}
       </div>
       <div className="card__empty-right"></div>
       <div className="card__logo-footer">

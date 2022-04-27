@@ -1,14 +1,14 @@
-@import "../variables/variables.scss";
+@import "../../variables/variables.scss";
 
 body {
-  background-color: $WhiteBackground;
+  background-color: $White;
 }
 
 .main {
   display: grid;
   grid-template-columns: 0.3fr 1.5fr 0.5fr 1.5fr;
   grid-template-rows: 8rem calc(100vh - 8rem);
-
+  background-color: $WhiteBackground;
   &__empty {
     grid-column: 1;
     grid-row: 1/3;
@@ -86,8 +86,11 @@ body {
 @media screen and (max-width: 1024px) {
   .main {
     display: grid;
-    grid-template-columns: 100vw;
-    grid-template-rows: 5rem 0.5fr auto;
+    width: 100vw;
+  height: 100vh;
+    
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 0.5fr 1fr;
 
     &__logo {
       grid-column: 1;
@@ -106,7 +109,10 @@ body {
     }
     &__text {
       b {
-        font-size: 50px;
+        font-size: 60px;
+      }
+      p {
+        font-size: 20px;
       }
     }
     &__right {
@@ -117,6 +123,11 @@ body {
       img {
         width: 100%;
         object-fit: contain;
+      }
+    }
+    &__list {
+      span {
+      font-size: 18px;
       }
     }
   }

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./CampgroundsList.scss";
-import logo from "../Assets/Logo.svg";
+import logo from "../../Assets/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import search from "../Assets/SearchIcon.svg";
-import Cards from "../components/Cards";
-import { useAuth } from "../hooks/use-auth";
+import search from "../../Assets/SearchIcon.svg";
+import Cards from "../../components/Cards";
+import { useAuth } from "../../hooks/use-auth";
 import { useDispatch } from "react-redux";
-import { removeUser } from "../store/slices/userSlice";
+import { removeUser } from "../../store/slices/userSlice";
 
 function CampgroundsList({ cards }) {
   const [searchCamping, setSearchCamping] = useState("");
@@ -18,7 +18,7 @@ function CampgroundsList({ cards }) {
     navigate("/signup");
   };
   
-  const { isAuth, login } = useAuth();
+  const { isAuth, login} = useAuth();
  
 
 
@@ -35,7 +35,7 @@ function CampgroundsList({ cards }) {
           </div>
           <Link className="list__link-home" to={"/"}>
             {" "}
-            Home{" "}
+            Home {" "}
           </Link>
         </div>
         <div className="list__navbar-right">

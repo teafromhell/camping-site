@@ -1,4 +1,5 @@
 import React from 'react'
+import './AddCamp.scss'
 
 function AddCamp() {
   return (

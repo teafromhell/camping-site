@@ -10,11 +10,15 @@ const initialUser = localStorage.getItem('acc')
   ? JSON.parse(localStorage.getItem('acc'))
   : null
 
-console.log(localStorage.getItem('acc'))
+  const initialComments = localStorage.getItem('comments')
+  ? JSON.parse(localStorage.getItem('comments'))
+  : []
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
     user: initialUser,
+    comments: initialComments,
   },
   reducers: {
     setUser(state, action) {
@@ -24,10 +28,15 @@ const userSlice = createSlice({
     removeUser(state) {
       state.user = null;
       localStorage.removeItem('acc');
+      
     },
+    commentsUser(state,action) {
+      state.comments = action.payload;
+      localStorage.setItem('comments', JSON.stringify(action.payload));
+    }
   },
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser, commentsUser } = userSlice.actions;
 
 export default userSlice.reducer;

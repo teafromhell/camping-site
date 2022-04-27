@@ -18,9 +18,9 @@ function Cards({ searchCamping, cards }) {
         .map((item) => {
           return (
             <div key={item.id} className="cards__single-card">
-              <Link to={`/campgrounds/${item.name}`}>
+              <Link className="cards__link-image" to={`/campgrounds/${item.name}`}>
                 <div>
-                  <img src={item.image} alt="card img" />
+                  <img src={item.imageGrid} alt="card img" />
                 </div>
               </Link>
               <b>{item.name}</b>

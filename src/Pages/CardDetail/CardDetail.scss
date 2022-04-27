@@ -1,4 +1,4 @@
-@import "../variables/variables.scss";
+@import "../../variables/variables.scss";
 
 .card {
   background-color: $White;
@@ -152,6 +152,7 @@
     align-self: flex-end;
     position: relative;
     display: flex;
+    text-decoration: none;
 
     align-items: center;
     img {

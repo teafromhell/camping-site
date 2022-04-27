@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./SignUp.scss";
-import logo from "../Assets/Logo.svg";
+import logo from "../../Assets/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import user from "../Assets/User Testimonial.svg";
+import user from "../../Assets/User Testimonial.svg";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "../store/slices/userSlice";
+import { setUser } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
 
 function SignUp() {
@@ -103,7 +103,7 @@ function SignUp() {
             camps on here are definitely well picked and added."
           </b>
           <div>
-            <div className="signup__usermail">
+            <div className="signup__username">
               <img src={user} alt="user" />
               <div>
                 <b>May Andrews</b>

@@ -1,11 +1,11 @@
 import React from "react";
 import "./WelcomePage.scss";
-import logo from "../Assets/Logo.svg";
-import checkmark from "../Assets/Checkmark.svg";
-import airbnb from "../Assets/Airbnb.svg";
-import booking from "../Assets/Booking.svg";
-import plum from "../Assets/Plum Guide.svg";
-import ResponsiveImage from "../components/ResponsiveImage";
+import logo from "../../Assets/Logo.svg";
+import checkmark from "../../Assets/Checkmark.svg";
+import airbnb from "../../Assets/Airbnb.svg";
+import booking from "../../Assets/Booking.svg";
+import plum from "../../Assets/Plum Guide.svg";
+import ResponsiveImage from "../../components/ResponsiveImage";
 import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {

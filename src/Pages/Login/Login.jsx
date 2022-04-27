@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Login.scss";
-import logo from "../Assets/Logo.svg";
+import logo from "../../Assets/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import user from "../Assets/User Testimonial.svg";
+import user from "../../Assets/User Testimonial.svg";
 import { useDispatch } from "react-redux";
-import { setUser } from "../store/slices/userSlice";
+import { setUser } from "../../store/slices/userSlice";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
@@ -91,7 +91,7 @@ function Login() {
             camps on here are definitely well picked and added."
           </b>
           <div>
-            <div className="login__usermail">
+            <div className="login__username">
               <img src={user} alt="user" />
               <div>
                 <b>May Andrews</b>
