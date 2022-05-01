@@ -46,7 +46,7 @@ function Login() {
         <img src={logo} alt="logo" />
         <Link className="login__backto-link" to={"/campgrounds"}>
           {" "}
-          <p>Back to campgrounds</p>
+          <p>Back to Camps</p>
         </Link>
       </div>
       <div className="login__left">

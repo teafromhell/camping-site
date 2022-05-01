@@ -1,8 +1,10 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./CardDetail.scss";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/Logo.svg";
+import ham from "../../Assets/Hamburger Menu.svg";
 import map from "../../Assets/Map.png";
 import bubble from "../../Assets/Chat Bubble.svg";
 import { useAuth } from "../../hooks/use-auth";
@@ -13,6 +15,9 @@ function CardDetail({ cards }) {
   const { name } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [menu, setMenu] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const signupPage = () => {
     navigate("/signup");
@@ -34,32 +39,45 @@ function CardDetail({ cards }) {
             {" "}
             Home{" "}
           </Link>
-          <Link className="card__link-camps" to={"/campgrounds"}>
-            Campgrounds
-          </Link>
         </div>
-        <div className="card__navbar-right">
-          {isAuth ? (
-            <>
-              <p className="login-p">{login}</p>
-              <div
-                className="card__link-login"
-                onClick={() => dispatch(removeUser())}
-              >
-                Logout
-              </div>
-            </>
-          ) : (
-            <>
-              <Link to="/login" className="card__link-login">
-                Login
-              </Link>
-              <button onClick={signupPage} className="card__create-btn">
-                Create an account
-              </button>
-            </>
-          )}
+        <div className="card__ham-wrapper">
+          <img
+            onClick={() => setMenu(!menu)}
+            className="card__ham-img"
+            src={ham}
+            alt="ham"
+          />
         </div>
+        {(menu || screenWidth > 480) && (
+          <div className="card__navbar-right">
+            {isAuth ? (
+              <>
+                <Link className="card__link-camps" to={"/campgrounds"}>
+                  Camps
+                </Link>
+                <p className="login-p">{login}</p>
+                <div
+                  className="card__link-login"
+                  onClick={() => dispatch(removeUser())}
+                >
+                  Logout
+                </div>
+              </>
+            ) : (
+              <>
+                <Link className="card__link-camps" to={"/campgrounds"}>
+                  Camps
+                </Link>
+                <Link to="/login" className="card__link-login">
+                  Login
+                </Link>
+                <button onClick={signupPage} className="card__create-btn">
+                  Create an account
+                </button>
+              </>
+            )}
+          </div>
+        )}
       </div>
       <div className="card__map">
         <img src={map} alt="map" />
@@ -111,21 +129,21 @@ function CardDetail({ cards }) {
           </p>
           <div className="breaker-line"></div>
         </div>
-        
-         {comments.filter((item)=> item.name === name)
-              .map((item)=>{
-           return (
-            <div className="card__single-comment">
-              <div className="comment-header"><b>{item.login}</b>
-              <p>1</p>
+
+        {comments
+          .filter((item) => item.name === name)
+          .map((item) => {
+            return (
+              <div className="card__single-comment">
+                <div className="comment-header">
+                  <b>{item.login}</b>
+                  <p>1</p>
+                </div>
+                <p>{item.comment}</p>
+                <div className="breaker-line"></div>
               </div>
-              <p>{item.comment}</p>
-              <div className="breaker-line"></div>
-            </div>
-           )
-         })}
-        
-        
+            );
+          })}
 
         {isAuth ? (
           cards
@@ -142,10 +160,10 @@ function CardDetail({ cards }) {
               );
             })
         ) : (
-          <div className="card__btn-block">
+          <Link className="card__btn-block" to="/login">
             <img src={bubble} alt="bubble" />
             <button className="card__review-btn">Leave a Review</button>
-          </div>
+          </Link>
         )}
       </div>
       <div className="card__empty-right"></div>

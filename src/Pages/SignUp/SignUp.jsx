@@ -50,7 +50,7 @@ function SignUp() {
         <img src={logo} alt="logo" />
         <Link className="signup__backto-link" to={"/campgrounds"}>
           {" "}
-          <p>Back to campgrounds</p>
+          <p>Back to Camps</p>
         </Link>
       </div>
       <div className="signup__left">
