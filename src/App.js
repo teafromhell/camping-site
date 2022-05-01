@@ -4,19 +4,20 @@ import CardDetail from "./Pages/CardDetail/CardDetail";
 import CampgroundsList from "./Pages/CampgroundsList/CampgroundsList";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 
-import one from "./Assets/CampImages/HighQualityImages/Mount Ulap.png";
-import two from "./Assets/CampImages/HighQualityImages/Calagus Islands.jpg";
-import three from "./Assets/CampImages/HighQualityImages/Onay Beach.jpg";
-import four from "./Assets/CampImages/HighQualityImages/Seven Sisters Waterfall.jpg";
-import five from "./Assets/CampImages/HighQualityImages/Latik Riverside.jpg";
-import six from "./Assets/CampImages/HighQualityImages/Buloy Springs.jpg";
-
-import oneSmall from "./Assets/CampImages/CompressedImages/Mount Ulap.jpg";
-import twoSmall from "./Assets/CampImages/CompressedImages/Calaguas Island.jpg";
-import threeSmall from "./Assets/CampImages/CompressedImages/Onay Beach.jpg";
-import fourSmall from "./Assets/CampImages/CompressedImages/Seven Sisters Waterfall.jpg";
-import fiveSmall from "./Assets/CampImages/CompressedImages/Latik Riverside.jpg";
-import sixSmall from "./Assets/CampImages/CompressedImages/Buloy Springs.jpg";
+import {
+  one,
+  two,
+  three,
+  four,
+  five,
+  six,
+  oneSmall,
+  twoSmall,
+  threeSmall,
+  fourSmall,
+  fiveSmall,
+  sixSmall,
+} from "./Assets/Components/index";
 
 import SignUp from "./Pages/SignUp/SignUp";
 import Login from "./Pages/Login/Login";
@@ -79,25 +80,28 @@ const mock = [
 ];
 
 function App() {
-  const [cards, setCards] = useState(mock)
+  const [cards, setCards] = useState(mock);
   return (
     <div className="App">
       <ScrollToTop>
-      <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route
-          path="/campgrounds"
-          element={<CampgroundsList cards={cards} />}
-        />
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route
+            path="/campgrounds"
+            element={<CampgroundsList cards={cards} />}
+          />
 
-        <Route
-          path="/campgrounds/:name"
-          element={<CardDetail cards={cards} />}
-        />
-        <Route path="/signup" element={<SignUp />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path='campgrounds/:name/newcomment/:name' element={<AddComment cards={cards} setCards={setCards}/>}></Route>
-      </Routes>
+          <Route
+            path="/campgrounds/:name"
+            element={<CardDetail cards={cards} />}
+          />
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route
+            path="campgrounds/:name/newcomment/:name"
+            element={<AddComment cards={cards} setCards={setCards} />}
+          ></Route>
+        </Routes>
       </ScrollToTop>
     </div>
   );
