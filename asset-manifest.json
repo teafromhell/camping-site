@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/camping-site/static/css/main.8c816ae2.css",
+    "main.js": "/camping-site/static/js/main.7dfeb357.js",
+    "static/media/Latik Riverside.jpg": "/camping-site/static/media/Latik Riverside.8f639031d862d92cd404.jpg",
+    "static/media/Buloy Springs.jpg": "/camping-site/static/media/Buloy Springs.b8b377473d9305e0b9cc.jpg",
+    "static/media/Onay Beach.jpg": "/camping-site/static/media/Onay Beach.faca9752c2394b82bff1.jpg",
+    "static/media/Calagus Islands.jpg": "/camping-site/static/media/Calagus Islands.f00b4ea9c96f60a1d008.jpg",
+    "static/media/Seven Sisters Waterfall.jpg": "/camping-site/static/media/Seven Sisters Waterfall.dd586b2b9b3faf8aff4e.jpg",
+    "static/media/Mount Ulap.png": "/camping-site/static/media/Mount Ulap.d14490fd02b98bea3fc2.png",
+    "static/media/Map.png": "/camping-site/static/media/Map.97047be1897c5b8502a8.png",
+    "static/media/HeroImage.jpg": "/camping-site/static/media/HeroImage.38b8b3fabac0227de377.jpg",
+    "static/media/Hero Image (Tablet and Mobile).jpg": "/camping-site/static/media/Hero Image (Tablet and Mobile).6adb03ce3e86546ed371.jpg",
+    "static/media/User Testimonial.svg": "/camping-site/static/media/User Testimonial.c9e4d5e582b324a74dc59142b0a7dc18.svg",
+    "static/media/Mount Ulap.jpg": "/camping-site/static/media/Mount Ulap.dade5f426139cc0e7b0a.jpg",
+    "static/media/Calaguas Island.jpg": "/camping-site/static/media/Calaguas Island.2df09fe53d3f4ef6b846.jpg",
+    "static/media/Plum Guide.svg": "/camping-site/static/media/Plum Guide.d66d3818edbea987a53281009775af02.svg",
+    "static/media/Booking.svg": "/camping-site/static/media/Booking.e1646697164266eaaa49a8759109dae2.svg",
+    "static/media/Airbnb.svg": "/camping-site/static/media/Airbnb.2a4553a34ca91aa467bc3f95fdf81e77.svg",
+    "static/media/Logo.svg": "/camping-site/static/media/Logo.a6cc6b83b409af85c7e13827eaca8ea0.svg",
+    "static/media/Chat Bubble.svg": "/camping-site/static/media/Chat Bubble.39aa8a9b79e6f3944dbaaadda482811b.svg",
+    "index.html": "/camping-site/index.html",
+    "static/media/SearchIcon.svg": "/camping-site/static/media/SearchIcon.1c005bdda281922969eb247c6f18c177.svg",
+    "static/media/Checkmark.svg": "/camping-site/static/media/Checkmark.fe52f1e33a5ed6f1a2e8613f569a3434.svg",
+    "static/media/Hamburger Menu.svg": "/camping-site/static/media/Hamburger Menu.e01f1151b99b8b7098dbbb95b4286fdb.svg",
+    "main.8c816ae2.css.map": "/camping-site/static/css/main.8c816ae2.css.map",
+    "main.7dfeb357.js.map": "/camping-site/static/js/main.7dfeb357.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8c816ae2.css",
+    "static/js/main.7dfeb357.js"
+  ]
+}
