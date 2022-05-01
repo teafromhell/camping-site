@@ -52,13 +52,13 @@ function Login() {
       <div className="login__left">
         <b>Start exploring camps from all around the world</b>
         <form action="">
-          <label htmlFor="">Usermail</label>
+          <label htmlFor="">Mail</label>
 
           <input
             value={mail}
             onChange={(e) => setMail(e.target.value)}
             type="text"
-            placeholder="Enter Your Usermail"
+            placeholder="Enter Your Mail"
             className={`${isInvalid ? "fail" : null}`}
           />
           <label htmlFor="">Password</label>

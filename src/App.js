@@ -3,7 +3,6 @@ import "./App.scss";
 import CardDetail from "./Pages/CardDetail/CardDetail";
 import CampgroundsList from "./Pages/CampgroundsList/CampgroundsList";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
-import AddCamp from "./Pages/AddCamp/AddCamp";
 
 import one from "./Assets/CampImages/HighQualityImages/Mount Ulap.png";
 import two from "./Assets/CampImages/HighQualityImages/Calagus Islands.jpg";
@@ -97,7 +96,6 @@ function App() {
         />
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/addcampground" element={<AddCamp />}></Route>
         <Route path='campgrounds/:name/newcomment/:name' element={<AddComment cards={cards} setCards={setCards}/>}></Route>
       </Routes>
       </ScrollToTop>

@@ -56,13 +56,13 @@ function SignUp() {
       <div className="signup__left">
         <b>Start exploring camps from all around the world</b>
         <form action="">
-          <label htmlFor="">Usermail</label>
+          <label htmlFor="">Mail</label>
           <input
             className={`${isInvalid ? "fail" : null}`}
             value={mailReg}
             onChange={(e) => setMailReg(e.target.value)}
             type="text"
-            placeholder="Choose Usermail"
+            placeholder="Choose Mail"
           />
           <div>
             <label htmlFor="">Password</label>
