@@ -22,7 +22,7 @@ function AddComment({ cards, setCards }) {
           { login: login, name: name, comment: comment },
         ])
       );
-      navigate("/campgrounds");
+      navigate(-1);
     }
   };
 

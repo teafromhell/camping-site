@@ -25,16 +25,18 @@ function SignUp() {
     e.preventDefault();
     const auth = getAuth();
     try {
-      await createUserWithEmailAndPassword(auth, mail, password).then(({ user }) => {
-        dispatch(
-          setUser({
-            mail: user.email,
-            id: user.uid,
-            token: user.accessToken,
-          })
-        );
-        navigate("/campgrounds");
-      });
+      await createUserWithEmailAndPassword(auth, mail, password).then(
+        ({ user }) => {
+          dispatch(
+            setUser({
+              mail: user.email,
+              id: user.uid,
+              token: user.accessToken,
+            })
+          );
+          navigate("/campgrounds");
+        }
+      );
     } catch {
       setInvalid(true);
     }
@@ -78,7 +80,7 @@ function SignUp() {
             className={`${isInvalid ? "fail" : null}`}
             value={passwordReg}
             onChange={(e) => setPasswordReg(e.target.value)}
-            type="text"
+            type="password"
             placeholder="Choose Password"
           />
           <button onClick={(e) => handleRegister(e, mailReg, passwordReg)}>

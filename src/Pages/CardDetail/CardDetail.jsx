@@ -110,7 +110,7 @@ function CardDetail({ cards }) {
         <div className="card__single-comment">
           <div className="comment-header">
             <b>Adam</b>
-            <p>13h ago</p>
+            <p></p>
           </div>
           <p>
             Honestly one of the best experiences ever, took us a while to figure
@@ -121,7 +121,7 @@ function CardDetail({ cards }) {
         <div className="card__single-comment">
           <div className="comment-header">
             <b>Isaac</b>
-            <p>1 day ago</p>
+            <p></p>
           </div>
           <p>
             Traveling changes you as a person, you gain more perspective, this
@@ -137,7 +137,7 @@ function CardDetail({ cards }) {
               <div className="card__single-comment">
                 <div className="comment-header">
                   <b>{item.login}</b>
-                  <p>1</p>
+                  <p></p>
                 </div>
                 <p>{item.comment}</p>
                 <div className="breaker-line"></div>

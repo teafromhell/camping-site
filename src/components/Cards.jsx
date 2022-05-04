@@ -12,8 +12,8 @@ function Cards({ searchCamping, cards }) {
       {cards
         .filter(
           (item) =>
-            item.name.toLowerCase().includes(searchCamping) ||
-            item.detail.toLowerCase().includes(searchCamping)
+            item.name.toLowerCase().includes(searchCamping.toLowerCase()) ||
+            item.detail.toLowerCase().includes(searchCamping.toLowerCase())
         )
         .map((item) => {
           return (

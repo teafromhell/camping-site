@@ -65,7 +65,7 @@ function Login() {
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            type="text"
+            type="password"
             placeholder="Enter Your Password"
             className={`${isInvalid ? "fail" : null}`}
           />
